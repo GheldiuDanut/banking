@@ -22,9 +22,9 @@ public class Bank implements ShowContent {
     }
 
     @Override
-    public void showContent() {
-        System.out.println("Bank name: " + this.name + "\n" +
-                ("---------------------------------"));
+    public String showContent() {
+        return "Bank name: " + this.name + "\n" +
+                ("---------------------------------");
     }
 
 

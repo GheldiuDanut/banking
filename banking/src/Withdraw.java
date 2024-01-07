@@ -1,14 +1,8 @@
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-public class Withdraw implements  Transaction{
+public class Withdraw implements Transaction {
 
     int value;
 
-
-    public Withdraw( int value) {
+    public Withdraw(int value) {
         this.value = value;
     }
 
@@ -16,50 +10,25 @@ public class Withdraw implements  Transaction{
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
 
     @Override
-    public void makeTransaction(int depositAmount) {
-        List<Transaction> transactionList = new ArrayList<>();
-        Withdraw withdraw = new Withdraw(value);
-        if (depositAmount > 0  && depositAmount <= withdraw.getValue()){
-            int newValue = withdraw.getValue()- value;
-            withdraw.setValue(newValue);
-            transactionList.add(withdraw);
+    public void makeTransaction(Account targetAccount) {
+
+        if (targetAccount.getValue() > 0 && targetAccount.getValue() >= value) {
+            targetAccount.setValue(targetAccount.getValue() - value);
+            targetAccount.getTransactionList().add(this);
             System.out.println("Successful withdrawal");
-        }
-        else {
+
+        } else {
             System.out.println("The amount is less than amount  in the account");
         }
-        for (Transaction transaction : transactionList){
-            System.out.println(withdraw.showTransaction());
+        for (Transaction transaction : targetAccount.transactionList) {
+            System.out.println(transaction);
+
         }
     }
-
-    public static void withdrawMoney(){
-//        List<Transaction> transactionList = new ArrayList<>();
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter a value to withdraw: ");
-//        int value = scanner.nextInt();
-//        Withdraw withdraw = new Withdraw(value);
-//        if (value > 0  && value <= withdraw.getValue()){
-//            int newValue = withdraw.getValue()- value;
-//            withdraw.setValue(newValue);
-//            transactionList.add(withdraw);
-//            System.out.println("Successful withdrawal");
-//        }
-//        else {
-//            System.out.println("The amount is less than amount  in the account");
-//        }
-//        for (Transaction transaction : transactionList){
-//            System.out.println(withdraw.showTransaction());
-//        }
+    public String showWithdrawalTransaction() {
+        return "Withdraw of " + value;
     }
 
-    public double showTransaction(){
-        return getValue();
-    }
 }

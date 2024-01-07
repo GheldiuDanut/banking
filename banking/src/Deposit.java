@@ -1,18 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-
 public class Deposit implements Transaction {
+    private final int value;
 
-    int value;
-    private Account account;
-    private User user;
-    private BankManager bankManager;
-
-
-    public Deposit( int value) {
-
+    public Deposit(int value) {
         this.value = value;
     }
 
@@ -20,55 +9,22 @@ public class Deposit implements Transaction {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-
     @Override
-    public void makeTransaction(int depositAmount) {
-
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the value you want to deposit");
-//        int value = scanner.nextInt();
-        System.out.println( bankManager.getAccountList());
-        if(depositAmount > 0){
-            Deposit deposit = new Deposit(depositAmount);
-
-            account.transactionList.add(deposit);
-            System.out.println("Successful deposit " + depositAmount);
-        }else {
+    public void makeTransaction(Account targetAccount) {
+        if (value > 0) {
+            targetAccount.setValue(targetAccount.getValue() + value);
+            targetAccount.getTransactionList().add(this);
+            System.out.println("Successful deposit " + value);
+        } else {
             System.out.println("You can't deposit money in this account. Enter a value greater than 0");
         }
-
-        for (Transaction transaction : account.transactionList){
+        System.out.println("Current account value is: " +"\n" + targetAccount.showContent());
+        for (Transaction transaction : targetAccount.getTransactionList()) {
             System.out.println(transaction);
         }
     }
 
-//    public static void depositMoney(){
-//        List<Transaction> transactionList = new ArrayList<>();
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the value you want to deposit");
-//        int value = scanner.nextInt();
-//
-//
-//        if(value > 0){
-//            Deposit deposit = new Deposit(value);
-//            transactionList.add(deposit);
-//            System.out.println("Successful deposit " + value);
-//        }else {
-//            System.out.println("You can't deposit money in this account. Enter a value greater than 0");
-//        }
-//
-//        for (Transaction transaction : transactionList){
-//            System.out.println(transaction);
-//        }
-//    }
-
-    public  int showTransaction(){
-        return this.value;
+    public String showDepositTransaction() {
+        return "Deposit of " + value;
     }
-
 }
-

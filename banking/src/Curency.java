@@ -1,4 +1,4 @@
-public enum Curency {LEI,EURO,DOLLAR,LIRA
+public enum Curency {RON,EUR,USD, GBP
     }
 
 

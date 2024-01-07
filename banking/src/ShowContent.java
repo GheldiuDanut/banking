@@ -1,6 +1,6 @@
 public interface ShowContent {
 
-    public void showContent();
+    public String showContent();
 
 
 }

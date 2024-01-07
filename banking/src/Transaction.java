@@ -1,8 +1,4 @@
 public interface Transaction {
 
-
-    void makeTransaction(int depositAmount);
-
-
-
+    void makeTransaction(Account targetAccount);
 }
