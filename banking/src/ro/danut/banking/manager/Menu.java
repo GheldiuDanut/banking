@@ -1,3 +1,5 @@
+package ro.danut.banking.manager;
+
 import java.util.Scanner;
 
 
@@ -12,17 +14,15 @@ public class Menu {
         boolean exit = false;
         int choice;
 
-            while (!exit) {
-                exit = true;
-                System.out.println("What would you like to do?\n");
-                System.out.println("  1. Create a bank");
-                System.out.println("  2. Quit");
-                System.out.println();
-                System.out.println("Enter Choice: ");
-                try {
+        while (!exit) {
+
+            System.out.println("What would you like to do?\n");
+            System.out.println("  1. Create a bank");
+            System.out.println("  2. Quit");
+            System.out.println();
+            System.out.println("Enter Choice: ");
+            try {
                 choice = scanner.nextInt();
-
-
                 switch (choice) {
                     case 1:
                         bankManager.createBank();
@@ -33,12 +33,13 @@ public class Menu {
                         break;
                     default:
                         System.out.println("Invalid choice. Please choose 1-2");
-                        exit = false;
-                    }
-                } catch (Exception e) {
-                    System.out.println("Invalid input. Please enter a valid number.");
-                    principalMenu();
+                        break;
                 }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                principalMenu();
             }
+
+        }
     }
 }

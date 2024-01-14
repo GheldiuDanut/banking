@@ -1,6 +1,10 @@
+package ro.danut.banking.entity;
+
+import ro.danut.banking.manager.ShowContent;
+import ro.danut.banking.manager.Transaction;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Account implements ShowContent {
 
@@ -11,7 +15,7 @@ public class Account implements ShowContent {
 
     private String currency;
 
-    List<Transaction>transactionList = new ArrayList<>();
+    List<Transaction> transactionList = new ArrayList<>();
 
     public List<Transaction> getTransactionList() {
         return transactionList;
@@ -47,13 +51,11 @@ public class Account implements ShowContent {
     }
 
 
-
-
     public String showContent() {
         return "First name is: " + firstName + ", " +
                 "Last name is: " + lastName + ", " +
                 "the new value is: " + value + ", " +
-                "the currency is: " + currency ;
+                "the currency is: " + currency;
 
     }
 

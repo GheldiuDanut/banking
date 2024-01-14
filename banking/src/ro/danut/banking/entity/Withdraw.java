@@ -1,3 +1,7 @@
+package ro.danut.banking.entity;
+
+import ro.danut.banking.manager.Transaction;
+
 public class Withdraw implements Transaction {
 
     int value;

@@ -1,3 +1,7 @@
+package ro.danut.banking.entity;
+
+import ro.danut.banking.manager.Transaction;
+
 public class Deposit implements Transaction {
     private final int value;
 
@@ -5,9 +9,6 @@ public class Deposit implements Transaction {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
 
     @Override
     public void makeTransaction(Account targetAccount) {
@@ -22,9 +23,5 @@ public class Deposit implements Transaction {
         for (Transaction transaction : targetAccount.getTransactionList()) {
             System.out.println(transaction);
         }
-    }
-
-    public String showDepositTransaction() {
-        return "Deposit of " + value;
     }
 }

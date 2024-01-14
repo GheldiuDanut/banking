@@ -1,3 +1,7 @@
+package ro.danut.banking.entity;
+
+import ro.danut.banking.manager.ShowContent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +12,7 @@ public class User implements ShowContent {
     private String password;
 
     private boolean isAdmin;
-    public static  List<Account> accountsList = new ArrayList<>();
+    public static List<Account> accountsList = new ArrayList<>();
 
     public User(String userName, String password, boolean isAdmin) {
         this.userName = userName;
@@ -30,12 +34,12 @@ public class User implements ShowContent {
         return password;
     }
 
-        @Override
-        public String  showContent () {
-            return  "First name: " + this.userName + "\n" + "Last name: " + this.password + " \n" + "Pin: " + this.isAdmin +
-                    "\n" + "-----------------------------------------------";
-        }
-
+    @Override
+    public String showContent() {
+        return "First name: " + this.userName + "\n" + "Last name: " + this.password + " \n" + "Pin: " + this.isAdmin +
+                "\n" + "-----------------------------------------------";
     }
+
+}
 
 
