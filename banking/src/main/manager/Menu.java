@@ -1,4 +1,4 @@
-package ro.danut.banking.manager;
+package main.manager;
 
 import java.util.Scanner;
 

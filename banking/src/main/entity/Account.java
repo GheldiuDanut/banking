@@ -1,7 +1,7 @@
-package ro.danut.banking.entity;
+package main.entity;
 
-import ro.danut.banking.manager.ShowContent;
-import ro.danut.banking.manager.Transaction;
+import main.manager.ShowContent;
+import main.manager.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;

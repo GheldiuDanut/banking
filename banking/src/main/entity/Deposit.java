@@ -1,6 +1,6 @@
-package ro.danut.banking.entity;
+package main.entity;
 
-import ro.danut.banking.manager.Transaction;
+import main.manager.Transaction;
 
 public class Deposit implements Transaction {
     private final int value;
@@ -19,9 +19,6 @@ public class Deposit implements Transaction {
         } else {
             System.out.println("You can't deposit money in this account. Enter a value greater than 0");
         }
-        System.out.println("Current account value is: " +"\n" + targetAccount.showContent());
-        for (Transaction transaction : targetAccount.getTransactionList()) {
-            System.out.println(transaction);
-        }
+        System.out.println("The current account value is: " +"\n" + targetAccount.showContent());
     }
 }

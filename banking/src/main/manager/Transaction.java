@@ -1,6 +1,7 @@
-package ro.danut.banking.manager;
+package main.manager;
 
-import ro.danut.banking.entity.Account;
+
+import main.entity.Account;
 
 public interface Transaction {
 

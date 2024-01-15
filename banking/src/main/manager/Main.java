@@ -1,4 +1,4 @@
-package ro.danut.banking.manager;
+package main.manager;
 
 public class Main {
     public static void main(String[] args) {

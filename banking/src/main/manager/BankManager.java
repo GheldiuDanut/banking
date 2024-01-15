@@ -1,6 +1,7 @@
-package ro.danut.banking.manager;
+package main.manager;
 
-import ro.danut.banking.entity.*;
+
+import main.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -325,14 +326,14 @@ public class BankManager {
                         System.out.println("The account list is empty.");
                     }
                     System.out.println();
-                    shortUserMenu();
+                    shortAccountMenu();
                     break;
                 case 3:
                     login();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
-                    shortUserMenu();
+                    shortAccountMenuForAdmin();
                     break;
 
             }
@@ -367,7 +368,7 @@ public class BankManager {
                     break;
                 case 3:
                     for (Account account : accountList) {
-                        System.out.println(accountSelected.getTransactionList());
+                        System.out.println(account.getTransactionList());
                     }
                     createAnotherTransaction();
                     break;
@@ -403,28 +404,43 @@ public class BankManager {
                 int choiceMenu = scanner.nextInt();
                 switch (choiceMenu) {
                     case 1:
-                        System.out.println("Enter the value you want to deposit");
-                        int value = scanner.nextInt();
-                        if (value == scanner.nextInt()) {
-                            Deposit deposit = new Deposit(value);
-                            deposit.makeTransaction(accountSelected);
-                            createAnotherTransaction();
-                        }else {
-                            System.out.println("Enter a true value to deposit");
+                        try {
+                            System.out.println("Enter the value you want to deposit");
+                            int value = scanner.nextInt();
+
+                            if (value > 0) {
+                                Deposit deposit = new Deposit(value);
+                                deposit.makeTransaction(accountSelected);
+                                createAnotherTransaction();
+                            } else {
+                                System.out.println("Enter a valid value to deposit");
+                                transactionMenu();
+                            }
+
+                        }catch (Exception e){
+                            System.out.println("Invalid input. Please enter a valid integer.");
                             transactionMenu();
                         }
                         break;
                     case 2:
-                        System.out.println("Enter the value you want to withdraw");
-                        value = scanner.nextInt();
-                        if (value == scanner.nextInt()){
-                        Withdraw withdraw = new Withdraw(value);
-                        withdraw.makeTransaction(accountSelected);
-                        break;
-                        }else {
-                            System.out.println("Enter a true value to withdraw");
+                        try {
+                            System.out.println("Enter the value you want to deposit");
+                            int value = scanner.nextInt();
+
+                            if (value > 0) {
+                                Withdraw withdraw = new Withdraw(value);
+                                withdraw.makeTransaction(accountSelected);
+                                createAnotherTransaction();
+                            } else {
+                                System.out.println("Enter a valid value to deposit");
+                                transactionMenu();
+                            }
+
+                        }catch (Exception e){
+                            System.out.println("Invalid input. Please enter a valid integer.");
                             transactionMenu();
                         }
+                        break;
                     case 3:
                         for (int i = 0; i < accountList.size() - 1; i++) {
                             System.out.println(accountSelected.getTransactionList());

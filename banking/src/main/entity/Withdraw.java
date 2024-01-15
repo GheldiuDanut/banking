@@ -1,6 +1,6 @@
-package ro.danut.banking.entity;
+package main.entity;
 
-import ro.danut.banking.manager.Transaction;
+import main.manager.Transaction;
 
 public class Withdraw implements Transaction {
 
@@ -21,18 +21,10 @@ public class Withdraw implements Transaction {
         if (targetAccount.getValue() > 0 && targetAccount.getValue() >= value) {
             targetAccount.setValue(targetAccount.getValue() - value);
             targetAccount.getTransactionList().add(this);
-            System.out.println("Successful withdrawal");
-
+            System.out.println("Successful withdrawal" + value);
         } else {
             System.out.println("The amount is less than amount  in the account");
         }
-        for (Transaction transaction : targetAccount.transactionList) {
-            System.out.println(transaction);
-
-        }
+        System.out.println("The current account value is: " +"\n" + targetAccount.showContent());
     }
-    public String showWithdrawalTransaction() {
-        return "Withdraw of " + value;
-    }
-
 }
